@@ -1,13 +1,31 @@
-import { test } from "@playwright/test";
-import { LoginPage } from "../pages/LoginPage";
-import { ENV } from "../config/env";
+// spec: specs/login-positive.plan.md
+// seed: tests/seed.spec.ts
 
-test("Login Test", async ({ page }) => {
-  const loginPage = new LoginPage(page);
+import { test, expect } from '@playwright/test';
+import { LoginPage } from '../pages/LoginPage';
+import { LoginLocators } from '../locators/loginLocators';
+import { ENV } from '../config/env';
+import { logStep } from '../loggers/logger';
 
-  // Base URL comes from playwright.config.ts
-  await page.goto("");
+test.describe('Login Positive Flow Tests', () => {
+  
+  test('Valid Login with Email and Password', async ({ page }) => {
+    logStep('Starting test', 'Valid Login with Email and Password');
+    const loginPage = new LoginPage(page);
 
-  // Username & Password from .env
-  await loginPage.login(ENV.username, ENV.password);
+   
+    await loginPage.navigate();
+    await loginPage.verifyLoginPageElements();
+
+    await loginPage.login(ENV.username, ENV.password);
+
+    // Verify successful login
+    await loginPage.verifySuccessfulLogin();
+    
+    logStep('Completed test', 'Valid Login with Email and Password');
+  });
+
+  
+
+
 });

@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const ENV = {
-  username: process.env.USERNAME || "",
+  username: process.env.LOGIN_USERNAME || "",
   password: process.env.PASSWORD || "",
   baseURL: process.env.BASE_URL || "",
   apiBaseURL: process.env.API_BASE_URL || "",
