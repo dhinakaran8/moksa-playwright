@@ -1,0 +1,7 @@
+{
+  "testCommand": "npx playwright test",
+  "watch": true,
+  "autoFix": true,
+  "maxRetries": 2,
+  "reportPath": "playwright-report"
+}
