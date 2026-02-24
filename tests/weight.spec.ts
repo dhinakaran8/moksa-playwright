@@ -40,7 +40,8 @@ test.describe("Customer Weight Management", () => {
       .catch(() => {});
 
     // Search customer using phone number 7708911056
-    await page.locator("//input[@type='search']").fill("7708911056");
+    // Create multiple weight records with progressive tracking
+    await page.locator("//input[@type='search']").fill("7397788113");
 
     // Wait for search results to load after entering phone number
     await new Promise((f) => setTimeout(f, 2 * 1000));
@@ -52,20 +53,17 @@ test.describe("Customer Weight Management", () => {
     await page.locator("//button[@id='weight-tab']").click();
 
     // Calculate date range: 3 years back from today to current date
-    const currentDate = new Date("2026-02-20");
-    const startDate = new Date("2023-02-20");
+    const currentDate = new Date("2026-02-15");
+    const startDate = new Date("2026-01-01");
 
     // Weight progression configuration
     const startWeight = 80;
-    const maxWeight = 90;
-    const totalDays = Math.ceil(
-      (currentDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24),
-    );
-    const weightIncrement = (maxWeight - startWeight) / totalDays;
+    const minWeight = 60;
+    const weightIncrement = -0.2;
 
     let currentWeight = startWeight;
     let recordsCreated = 0;
-    const maxRecords = 10; // Limit to 10 records for testing to prevent browser timeout
+    const maxRecords = 100; // Limit to 10 records for testing to prevent browser timeout
 
     // Generate daily weight records
     for (
@@ -196,12 +194,12 @@ test.describe("Customer Weight Management", () => {
         .locator("//button[contains(., 'Add Weight Record')]")
         .waitFor({ state: "visible", timeout: 10000 });
 
-      // Increment weight gradually
+      // Decrement weight gradually
       currentWeight += weightIncrement;
 
-      // Ensure weight doesn't exceed maximum
-      if (currentWeight > maxWeight) {
-        currentWeight = maxWeight;
+      // Ensure weight doesn't go below minimum
+      if (currentWeight < minWeight) {
+        currentWeight = minWeight;
       }
 
       recordsCreated++;
