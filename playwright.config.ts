@@ -6,7 +6,7 @@ export default defineConfig({
   retries: 1,
   use: {
     baseURL: ENV.baseURL,
-    headless: false,
+    headless: true,
     screenshot: "only-on-failure",
     video: "retain-on-failure",
     viewport: { width: 1536, height: 703 },

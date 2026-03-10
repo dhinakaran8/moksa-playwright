@@ -1,0 +1,24 @@
+[10/3/2026, 3:41:40 pm] 📊 All Stored Customers JSON:
+[
+  {
+    "id": 1,
+    "name": "Suresh",
+    "mobile": "9422072504",
+    "created_at": "2026-03-10T09:55:21.140Z",
+    "test_run": "10/3/2026, 3:25:21 pm"
+  },
+  {
+    "id": 2,
+    "name": "Michelle",
+    "mobile": "9117701595",
+    "created_at": "2026-03-10T10:11:07.263Z",
+    "test_run": "10/3/2026, 3:41:07 pm"
+  }
+]
+
+📈 Total customers stored: 2
+
+📋 Customer List:
+1. Name: Suresh, Mobile: 9422072504
+2. Name: Michelle, Mobile: 9117701595
+

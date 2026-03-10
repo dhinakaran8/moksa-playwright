@@ -41,7 +41,7 @@ test.describe("Customer Weight Management", () => {
 
     // Search customer using phone number 7708911056
     // Create multiple weight records with progressive tracking
-    await page.locator("//input[@type='search']").fill("9500730392");
+    await page.locator("//input[@type='search']").fill("5508911056");
 
     // Wait for search results to load after entering phone number
     await new Promise((f) => setTimeout(f, 2 * 1000));
